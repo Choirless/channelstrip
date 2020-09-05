@@ -1,14 +1,18 @@
 {
-  "name": "mixer",
+  "name": "channelstrip",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "standard",
+    "standard": "standard --fix"
   },
   "author": "",
   "license": "Apache-2.0",
   "dependencies": {
     "fluent-ffmpeg": "^2.1.2"
+  },
+  "devDependencies": {
+    "standard": "^14.3.4"
   }
 }
