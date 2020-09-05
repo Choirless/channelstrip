@@ -3,8 +3,67 @@ const path = require('path')
 
 const mixdown = async (opts) => {
   return new Promise((resolve, reject) => {
-    const filters = [
-    ]
+    // check input & output parameters
+    if (!opts.input || !opts.output) {
+      return reject(new Error('missing input/output parameters'))
+    }
+
+    // check type and range of other parameters
+    const params = {
+      trim: {
+        type: 'number',
+        min: 0,
+        max: Number.MAX_SAFE_INTEGER
+      },
+      gate: {
+        type: 'boolean'
+      },
+      compress: {
+        type: 'boolean'
+      },
+      volume: {
+        type: 'number',
+        min: 0,
+        max: Number.MAX_SAFE_INTEGER
+      },
+      treble: {
+        type: 'number',
+        min: -1,
+        max: 1
+      },
+      bass: {
+        type: 'number',
+        min: -1,
+        max: 1
+      },
+      extrastereo: {
+        type: 'boolean'
+      },
+      pan: {
+        type: 'number',
+        min: -1,
+        max: 1
+      },
+      reverb: {
+        type: 'number',
+        min: 0,
+        max: 1
+      }
+    }
+    for (var i in params) {
+      const p = params[i]
+      if (opts[i]) {
+        if (typeof opts[i] !== p.type) { // eslint-disable-line
+          return reject(new Error(`invalid type - ${i}`))
+        }
+        if (p.type === 'number' && (opts[i] < p.min || opts[i] > p.max)) {
+          return reject(new Error(`out of range - ${i}`))
+        }
+      }
+    }
+
+    // array of filters to apply and counter to keep track of i/o labels
+    const filters = []
     let stage = 1
 
     // trim - 0 - inf
