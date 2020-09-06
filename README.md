@@ -2,7 +2,7 @@
 
 An audio manipulation library that behaves like a channel strip on an audio mixing desk
 
-![](channelstrip.png)
+![](https://github.com/choirless/channelstrip/raw/master/channelstrip.png)
 
 It allows the following effects to be applied in this order:
 
