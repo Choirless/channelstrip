@@ -48,6 +48,11 @@ const mixdown = async (opts) => {
         type: 'number',
         min: 0,
         max: 1
+      },
+      durtion: {
+        type: 'number',
+        min: 0,
+        max: Number.MAX_SAFE_INTEGER
       }
     }
     for (var i in params) {
@@ -168,16 +173,23 @@ const mixdown = async (opts) => {
       })
     }
 
-    // run the command
-    ffmpeg()
+    // configure the command
+    const command = ffmpeg()
       .input(path.join(__dirname, 'hall.wav'))
       .input(opts.input)
       .complexFilter(filters, stage.toString())
       .output(opts.output)
-    //      .on('start', console.log)
       .on('error', reject)
       .on('end', resolve)
-      .run()
+      // .on('start', console.log)
+
+    // optional duration
+    if (opts.duration) {
+      command.duration(opts.duration)
+    }
+
+    // run the command
+    command.run()
   })
 }
 

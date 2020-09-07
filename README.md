@@ -7,6 +7,7 @@ An audio manipulation library that behaves like a channel strip on an audio mixi
 It allows the following effects to be applied in this order:
 
 - `trim` - number (seconds) - the amount of audio to be trimmed from the start of the file (default: 0)
+- `duration` - number (seconds) - stop processing after this time has elapsed (default: whole file)
 - `gate` - boolean - whether to apply a noise gate (default: false)
 - `compress` - boolean - whether to compress the dynamic range (default: false)
 - `volume` - number - volume level: 0=silence 1=unchanged (default: 1)
