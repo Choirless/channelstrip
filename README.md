@@ -1,5 +1,7 @@
 # channelstrip
 
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) [![Slack](https://img.shields.io/badge/Join-Slack-blue)](https://callforcode.org/slack)
+
 An audio manipulation library that behaves like a channel strip on an audio mixing desk
 
 ![](https://github.com/choirless/channelstrip/raw/master/channelstrip.png)
